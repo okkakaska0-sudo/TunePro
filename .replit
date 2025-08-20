@@ -1,0 +1,41 @@
+modules = ["cpp"]
+[agent]
+expertMode = true
+
+[nix]
+channel = "stable-25_05"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "VST3 AutoTune Build"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "build_and_test"
+
+[[workflows.workflow]]
+name = "VST3 AutoTune Build"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "chmod +x build_simple.sh && ./build_simple.sh"
+
+[workflows.workflow.metadata]
+outputType = "console"
+
+[[workflows.workflow]]
+name = "build_and_test"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "chmod +x build_simple.sh && ./build_simple.sh"

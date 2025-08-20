@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Pointer gradient -->
+    <linearGradient id="pointerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.9" />
+      <stop offset="30%" style="stop-color:#E0E0E0;stop-opacity:0.8" />
+      <stop offset="70%" style="stop-color:#B0B0B0;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#808080;stop-opacity:0.6" />
+    </linearGradient>
+    
+    <!-- Pointer shadow -->
+    <filter id="pointerShadow" x="-100%" y="-100%" width="300%" height="300%">
+      <feDropShadow dx="1" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+    
+    <!-- Glow effect -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Main pointer body -->
+  <rect x="57" y="20" width="6" height="35" rx="3" ry="3" 
+        fill="url(#pointerGradient)" 
+        filter="url(#pointerShadow)"/>
+  
+  <!-- Pointer tip -->
+  <path d="M 57 20 L 60 15 L 63 20 Z" 
+        fill="url(#pointerGradient)" 
+        filter="url(#pointerShadow)"/>
+  
+  <!-- Highlight on pointer -->
+  <rect x="58" y="22" width="2" height="30" rx="1" ry="1" 
+        fill="#FFFFFF" opacity="0.8"/>
+  
+  <!-- Center hub -->
+  <circle cx="60" cy="60" r="8" fill="#4A4A4A" filter="url(#pointerShadow)"/>
+  <circle cx="60" cy="60" r="6" fill="#6A6A6A"/>
+  <circle cx="60" cy="60" r="4" fill="#8A8A8A"/>
+  
+  <!-- Hub highlight -->
+  <ellipse cx="59" cy="58" rx="2" ry="1.5" fill="#FFFFFF" opacity="0.6"/>
+  
+  <!-- Decorative elements for different pointer states -->
+  <!-- Active state indicator (hidden by default) -->
+  <g id="activeIndicator" opacity="0">
+    <circle cx="60" cy="60" r="12" fill="none" stroke="#FFD700" stroke-width="2" opacity="0.8" filter="url(#glow)"/>
+    <circle cx="60" cy="60" r="10" fill="none" stroke="#FFFF00" stroke-width="1" opacity="0.6"/>
+  </g>
+  
+  <!-- Value indicator dots -->
+  <g id="valueIndicators" opacity="0.7">
+    <!-- Min value dot -->
+    <circle cx="25" cy="60" r="1.5" fill="#FF4444" opacity="0.6"/>
+    <text x="25" y="75" text-anchor="middle" font-family="Arial" font-size="8" fill="#FFFFFF" opacity="0.6">MIN</text>
+    
+    <!-- Max value dot -->  
+    <circle cx="95" cy="60" r="1.5" fill="#44FF44" opacity="0.6"/>
+    <text x="95" y="75" text-anchor="middle" font-family="Arial" font-size="8" fill="#FFFFFF" opacity="0.6">MAX</text>
+    
+    <!-- Center value dot -->
+    <circle cx="60" cy="15" r="1.5" fill="#4444FF" opacity="0.6"/>
+    <text x="60" y="10" text-anchor="middle" font-family="Arial" font-size="8" fill="#FFFFFF" opacity="0.6">CTR</text>
+  </g>
+</svg>
