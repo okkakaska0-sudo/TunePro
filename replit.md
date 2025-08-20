@@ -24,6 +24,7 @@ This project is designed **exclusively for macOS** and cannot run in Replit's Li
 1. Загрузить проект из Replit (размер: ~3.5MB включая все библиотеки)
 2. Выполнить: `chmod +x build_simple.sh && ./build_simple.sh`
 3. Плагин будет установлен в системные директории macOS
+4. Подробные инструкции в README_DOWNLOAD.md
 
 ### Полностью автономное содержимое проекта:
 - **19 исходных файлов** (C++/H) в директории Source/
