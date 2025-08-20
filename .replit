@@ -4,7 +4,7 @@ expertMode = true
 
 [nix]
 channel = "stable-25_05"
-packages = ["unzip", "cmake", "git"]
+packages = ["unzip", "cmake", "git", "gcc", "gnumake", "qemu", "OVMF", "alsa-lib", "freetype", "gtk3", "curl", "pkg-config"]
 
 [workflows]
 runButton = "Project"

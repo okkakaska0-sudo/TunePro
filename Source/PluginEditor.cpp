@@ -317,7 +317,7 @@ void AutoTuneAudioProcessorEditor::drawPitchDisplay(Graphics& g, const Rectangle
     g.strokePath(pitchPath, PathStrokeType(2.0f));
 }
 
-void AutoTuneAudioProcessorEditor::drawLevelMeters(Graphics& g, const Rectangle<int>& area)
+void AutoTuneAudioProcessorEditor::drawLevelMeters(Graphics& g, Rectangle<int> area)
 {
     // Draw input/output level meters
     auto meterWidth = 20;

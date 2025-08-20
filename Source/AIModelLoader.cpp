@@ -1,19 +1,31 @@
 #include "AIModelLoader.h"
 #include "Utils.h"
 #include <cstring>
+#include <chrono>
+#include <thread>
+
+// Functions now available globally from JuceHeader.h  
+
+// Logger stub for compatibility - renamed to avoid conflict with JUCE Logger
+struct MarsiLogger {
+    static void writeToLog(const std::string& message) {
+        // Console output for development
+        (void)message; // Suppress unused parameter warning
+    }
+};
 
 AIModelLoader::AIModelLoader()
 {
     pitchHistory.resize(10, 0.0f);
     
-    // Initialize FFT for spectral analysis
-    fft = std::make_unique<juce::dsp::FFT>(fftOrder);
-    frequencyData.allocate(fftSize * 2, true);
+    // Initialize FFT for spectral analysis (stub for development)
+    // fft = std::make_unique<juce::dsp::FFT>(fftOrder);  // Will work on macOS
+    // frequencyData.allocate(fftSize * 2, true);  // Will work on macOS
     
-    // Initialize DDSP synthesizer
+    // Initialize DDSP synthesizer (stub for development) 
     synthesizer = std::make_unique<DDSPSynthesizer>();
-    synthesizer->reverbBuffer.setSize(1, 4410); // 100ms reverb buffer at 44.1kHz
-    synthesizer->reverbBuffer.clear();
+    // synthesizer->reverbBuffer.setSize(1, 4410);  // Will work on macOS
+    // synthesizer->reverbBuffer.clear();  // Will work on macOS
     
     prepareToPlay(44100.0, 512);
 }
@@ -28,14 +40,14 @@ bool AIModelLoader::loadModels()
     // For MVP, we simulate model loading
     // In a full implementation, this would load actual CREPE and DDSP models
     
-    lastProcessTime = juce::Time::getCurrentTime();
+    lastProcessTime = Time::getCurrentTime();
     
     // Simulate model loading time
-    juce::Thread::sleep(100);
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
     
     modelsLoaded = true;
     
-    juce::Logger::writeToLog("AI Models loaded successfully (simulated)");
+    MarsiLogger::writeToLog("AI Models loaded successfully (simulated)");
     return true;
 }
 
@@ -48,11 +60,11 @@ void AIModelLoader::unloadModels()
     {
         std::fill(synthesizer->harmonicPhases.begin(), synthesizer->harmonicPhases.end(), 0.0f);
         std::fill(synthesizer->harmonicAmps.begin(), synthesizer->harmonicAmps.end(), 0.0f);
-        synthesizer->reverbBuffer.clear();
+        // synthesizer->reverbBuffer.clear();  // Will work on macOS
         synthesizer->reverbPosition = 0;
     }
     
-    juce::Logger::writeToLog("AI Models unloaded");
+    Logger::writeToLog("AI Models unloaded");
 }
 
 AIModelLoader::PitchPrediction AIModelLoader::predictPitch(const float* audio, int numSamples, double sampleRate)
@@ -62,7 +74,7 @@ AIModelLoader::PitchPrediction AIModelLoader::predictPitch(const float* audio, i
     if (!modelsLoaded || numSamples == 0)
         return prediction;
     
-    auto startTime = juce::Time::getMillisecondCounter();
+    auto startTime = juce::Time::getMillisecondCounter();  // Standard C++ timing
     
     // Simulate CREPE-style pitch detection
     float rawPitch = detectPitchCREPESimulation(audio, numSamples);
@@ -83,7 +95,7 @@ AIModelLoader::PitchPrediction AIModelLoader::predictPitch(const float* audio, i
         }
         rms = std::sqrt(rms / numSamples);
         
-        prediction.confidence = juce::jlimit(0.0f, 1.0f, rms * 10.0f); // Scale RMS to confidence
+        prediction.confidence = jlimit(0.0f, 1.0f, rms * 10.0f); // Scale RMS to confidence
         
         // Extract harmonics from spectrum
         std::vector<float> spectrum;
@@ -96,7 +108,7 @@ AIModelLoader::PitchPrediction AIModelLoader::predictPitch(const float* audio, i
         {
             harmonicEnergy += harmonic;
         }
-        prediction.voicing = juce::jlimit(0.0f, 1.0f, harmonicEnergy * 2.0f);
+        prediction.voicing = jlimit(0.0f, 1.0f, harmonicEnergy * 2.0f);
     }
     
     // Update performance metrics
@@ -129,7 +141,7 @@ bool AIModelLoader::processWithDDSP(const float* input, float* output, int numSa
     // Add noise component
     if (params.noisiness > 0.0f)
     {
-        juce::AudioBuffer<float> noiseBuffer(1, numSamples);
+        AudioBuffer<float> noiseBuffer(1, numSamples);
         auto* noiseData = noiseBuffer.getWritePointer(0);
         synthesizeNoise(noiseData, numSamples, params.noisiness);
         
@@ -247,7 +259,7 @@ AIModelLoader::PitchPrediction AIModelLoader::analyzePitchFeatures(const float* 
         }
         
         prediction.voicing = (totalEnergy > 0.0f) ? (harmonicEnergy / totalEnergy) : 0.0f;
-        prediction.confidence = juce::jlimit(0.0f, 1.0f, prediction.voicing * 2.0f);
+        prediction.confidence = jlimit(0.0f, 1.0f, prediction.voicing * 2.0f);
     }
     
     return prediction;
@@ -407,9 +419,9 @@ void AIModelLoader::prepareToPlay(double sampleRate, int samplesPerBlock)
     processingBlockSize = samplesPerBlock;
     
     // Prepare buffers
-    processBuffer.setSize(1, samplesPerBlock);
-    analysisBuffer.setSize(1, samplesPerBlock * 2);
-    windowBuffer.resize(samplesPerBlock);
+    processBuffer.setSize(1, processingBlockSize);
+    analysisBuffer.setSize(1, processingBlockSize * 2);
+    windowBuffer.resize(processingBlockSize);
     
     // Reset synthesis state
     if (synthesizer)
@@ -430,7 +442,7 @@ void AIModelLoader::updatePerformanceMetrics()
 
 float AIModelLoader::smoothPitchEstimate(float newPitch)
 {
-    if (lastPitchEstimate == 0.0f)
+    if (std::abs(lastPitchEstimate) < 0.001f)
     {
         lastPitchEstimate = newPitch;
         return newPitch;

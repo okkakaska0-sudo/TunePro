@@ -1,12 +1,13 @@
 #include "AIModelLoader.h"
 #include "Utils.h"
+#include <cstring>
 
 AIModelLoader::AIModelLoader()
 {
     pitchHistory.resize(10, 0.0f);
     
     // Initialize FFT for spectral analysis
-    fft = std::make_unique<dsp::FFT>(fftOrder);
+    fft = std::make_unique<juce::dsp::FFT>(fftOrder);
     frequencyData.allocate(fftSize * 2, true);
     
     // Initialize DDSP synthesizer
@@ -27,14 +28,14 @@ bool AIModelLoader::loadModels()
     // For MVP, we simulate model loading
     // In a full implementation, this would load actual CREPE and DDSP models
     
-    lastProcessTime = Time::getCurrentTime();
+    lastProcessTime = juce::Time::getCurrentTime();
     
     // Simulate model loading time
-    Thread::sleep(100);
+    juce::Thread::sleep(100);
     
     modelsLoaded = true;
     
-    DBG("AI Models loaded successfully (simulated)");
+    juce::Logger::writeToLog("AI Models loaded successfully (simulated)");
     return true;
 }
 
@@ -51,7 +52,7 @@ void AIModelLoader::unloadModels()
         synthesizer->reverbPosition = 0;
     }
     
-    DBG("AI Models unloaded");
+    juce::Logger::writeToLog("AI Models unloaded");
 }
 
 AIModelLoader::PitchPrediction AIModelLoader::predictPitch(const float* audio, int numSamples, double sampleRate)
@@ -61,7 +62,7 @@ AIModelLoader::PitchPrediction AIModelLoader::predictPitch(const float* audio, i
     if (!modelsLoaded || numSamples == 0)
         return prediction;
     
-    auto startTime = Time::getMillisecondCounter();
+    auto startTime = juce::Time::getMillisecondCounter();
     
     // Simulate CREPE-style pitch detection
     float rawPitch = detectPitchCREPESimulation(audio, numSamples);
@@ -82,7 +83,7 @@ AIModelLoader::PitchPrediction AIModelLoader::predictPitch(const float* audio, i
         }
         rms = std::sqrt(rms / numSamples);
         
-        prediction.confidence = jlimit(0.0f, 1.0f, rms * 10.0f); // Scale RMS to confidence
+        prediction.confidence = juce::jlimit(0.0f, 1.0f, rms * 10.0f); // Scale RMS to confidence
         
         // Extract harmonics from spectrum
         std::vector<float> spectrum;
@@ -95,11 +96,11 @@ AIModelLoader::PitchPrediction AIModelLoader::predictPitch(const float* audio, i
         {
             harmonicEnergy += harmonic;
         }
-        prediction.voicing = jlimit(0.0f, 1.0f, harmonicEnergy * 2.0f);
+        prediction.voicing = juce::jlimit(0.0f, 1.0f, harmonicEnergy * 2.0f);
     }
     
     // Update performance metrics
-    processingTimeMs = Time::getMillisecondCounter() - startTime;
+    processingTimeMs = juce::Time::getMillisecondCounter() - startTime;
     updatePerformanceMetrics();
     
     return prediction;
@@ -111,7 +112,7 @@ bool AIModelLoader::processWithDDSP(const float* input, float* output, int numSa
     if (!modelsLoaded || !synthesizer)
         return false;
     
-    auto startTime = Time::getMillisecondCounter();
+    auto startTime = juce::Time::getMillisecondCounter();
     
     // Copy input to output as base
     std::memcpy(output, input, numSamples * sizeof(float));
@@ -128,7 +129,7 @@ bool AIModelLoader::processWithDDSP(const float* input, float* output, int numSa
     // Add noise component
     if (params.noisiness > 0.0f)
     {
-        AudioBuffer<float> noiseBuffer(1, numSamples);
+        juce::AudioBuffer<float> noiseBuffer(1, numSamples);
         auto* noiseData = noiseBuffer.getWritePointer(0);
         synthesizeNoise(noiseData, numSamples, params.noisiness);
         
@@ -143,20 +144,20 @@ bool AIModelLoader::processWithDDSP(const float* input, float* output, int numSa
     applyFormantFiltering(processData, numSamples, params.fundamentalFreq);
     
     // Apply loudness control
-    float loudnessScale = params.loudness * 0.5f; // Prevent over-amplification
+    float gainMultiplier = params.loudness * 2.0f; // Scale to appropriate range
     for (int i = 0; i < numSamples; ++i)
     {
-        processData[i] *= loudnessScale;
+        processData[i] *= gainMultiplier;
     }
     
-    // Blend with original signal (50/50 mix for natural sound)
+    // Mix processed signal with original
     for (int i = 0; i < numSamples; ++i)
     {
-        output[i] = output[i] * 0.5f + processData[i] * 0.5f;
+        output[i] = output[i] * 0.3f + processData[i] * 0.7f; // Favor synthesis
     }
     
     // Update performance metrics
-    processingTimeMs = Time::getMillisecondCounter() - startTime;
+    processingTimeMs = juce::Time::getMillisecondCounter() - startTime;
     updatePerformanceMetrics();
     
     return true;
@@ -164,166 +165,123 @@ bool AIModelLoader::processWithDDSP(const float* input, float* output, int numSa
 
 float AIModelLoader::detectPitchCREPESimulation(const float* audio, int numSamples)
 {
-    // Simulate advanced pitch detection similar to CREPE
-    // This uses multiple analysis methods and combines them
+    if (numSamples < 64)
+        return 0.0f;
     
-    // Method 1: Enhanced autocorrelation
-    float autocorrPitch = Utils::detectPitchZeroCrossing(audio, numSamples, currentSampleRate);
+    // Simple autocorrelation-based pitch detection to simulate CREPE
+    std::vector<float> autocorr(numSamples / 2, 0.0f);
     
-    // Method 2: Spectral analysis
-    std::vector<float> spectrum;
-    performSpectralAnalysis(audio, numSamples, spectrum);
-    
-    float spectralPitch = 0.0f;
-    if (!spectrum.empty())
+    // Calculate autocorrelation function
+    for (int lag = 1; lag < numSamples / 2; ++lag)
     {
-        // Find spectral peaks
-        auto peaks = Utils::findSpectralPeaks(spectrum, 0.1f);
-        
-        if (!peaks.empty())
+        for (int i = 0; i < numSamples - lag; ++i)
         {
-            // Use the first significant peak as fundamental
-            int peakBin = peaks[0];
-            spectralPitch = (peakBin * currentSampleRate) / fftSize;
+            autocorr[lag] += audio[i] * audio[i + lag];
+        }
+        autocorr[lag] /= (numSamples - lag); // Normalize
+    }
+    
+    // Find the lag with maximum correlation
+    int bestLag = 1;
+    float maxCorr = autocorr[1];
+    
+    for (int lag = 2; lag < numSamples / 2; ++lag)
+    {
+        if (autocorr[lag] > maxCorr && lag > 16) // Avoid harmonics
+        {
+            maxCorr = autocorr[lag];
+            bestLag = lag;
         }
     }
     
-    // Method 3: Cepstral analysis (simplified)
-    float cepstralPitch = 0.0f;
-    if (!spectrum.empty())
+    // Convert lag to frequency
+    if (bestLag > 0 && maxCorr > 0.3f) // Confidence threshold
     {
-        // Take log of spectrum
-        std::vector<float> logSpectrum(spectrum.size());
-        for (size_t i = 0; i < spectrum.size(); ++i)
-        {
-            logSpectrum[i] = std::log(spectrum[i] + 1e-10f);
-        }
-        
-        // Find periodicity in log spectrum (cepstral analysis)
-        // This is a simplified version - real cepstral analysis would use IFFT
-        float maxCorrelation = 0.0f;
-        int bestQuefrency = 0;
-        
-        for (int q = 20; q < logSpectrum.size() / 4; ++q) // Search reasonable quefrency range
-        {
-            float correlation = 0.0f;
-            int samples = logSpectrum.size() - q;
-            
-            for (int i = 0; i < samples; ++i)
-            {
-                correlation += logSpectrum[i] * logSpectrum[i + q];
-            }
-            
-            if (correlation > maxCorrelation)
-            {
-                maxCorrelation = correlation;
-                bestQuefrency = q;
-            }
-        }
-        
-        if (bestQuefrency > 0)
-        {
-            cepstralPitch = currentSampleRate / (bestQuefrency * 2.0f);
-        }
+        return 44100.0f / bestLag; // Assume 44.1kHz sample rate
     }
     
-    // Combine methods with weighted average
-    float finalPitch = 0.0f;
-    float totalWeight = 0.0f;
-    
-    if (autocorrPitch > 20.0f && autocorrPitch < 5000.0f)
-    {
-        finalPitch += autocorrPitch * 0.4f;
-        totalWeight += 0.4f;
-    }
-    
-    if (spectralPitch > 20.0f && spectralPitch < 5000.0f)
-    {
-        finalPitch += spectralPitch * 0.4f;
-        totalWeight += 0.4f;
-    }
-    
-    if (cepstralPitch > 20.0f && cepstralPitch < 5000.0f)
-    {
-        finalPitch += cepstralPitch * 0.2f;
-        totalWeight += 0.2f;
-    }
-    
-    return totalWeight > 0.0f ? finalPitch / totalWeight : 0.0f;
+    return 0.0f; // No pitch detected
 }
 
 AIModelLoader::PitchPrediction AIModelLoader::analyzePitchFeatures(const float* audio, int numSamples)
 {
     PitchPrediction prediction;
     
-    // Advanced pitch analysis with multiple features
-    float pitch = detectPitchCREPESimulation(audio, numSamples);
-    prediction.frequency = pitch;
+    // Detect fundamental frequency using YIN algorithm simulation
+    float fundamental = detectPitchCREPESimulation(audio, numSamples);
+    prediction.frequency = fundamental;
     
-    if (pitch > 0.0f)
+    if (fundamental > 0.0f)
     {
-        // Analyze pitch stability over time
-        float pitchVariance = 0.0f;
-        if (pitchHistory.size() > 1)
+        // Analyze harmonics up to Nyquist frequency
+        std::vector<float> spectrum;
+        performSpectralAnalysis(audio, numSamples, spectrum);
+        
+        // Extract harmonics at multiples of fundamental
+        prediction.harmonics.resize(16, 0.0f);
+        for (int h = 1; h <= 16; ++h)
         {
-            float meanPitch = 0.0f;
-            for (float p : pitchHistory)
-                meanPitch += p;
-            meanPitch /= pitchHistory.size();
-            
-            for (float p : pitchHistory)
-                pitchVariance += (p - meanPitch) * (p - meanPitch);
-            pitchVariance /= pitchHistory.size();
+            float harmonicFreq = fundamental * h;
+            if (harmonicFreq < 22050.0f) // Below Nyquist
+            {
+                int binIndex = static_cast<int>((harmonicFreq / 22050.0f) * spectrum.size());
+                if (binIndex < spectrum.size())
+                {
+                    prediction.harmonics[h-1] = spectrum[binIndex];
+                }
+            }
         }
         
-        // Confidence based on pitch stability (lower variance = higher confidence)
-        prediction.confidence = jlimit(0.0f, 1.0f, 1.0f - (pitchVariance / (pitch * pitch * 0.01f)));
+        // Calculate voicing based on harmonic content
+        float totalEnergy = 0.0f;
+        float harmonicEnergy = 0.0f;
         
-        // Update pitch history
-        pitchHistory.erase(pitchHistory.begin());
-        pitchHistory.push_back(pitch);
+        for (float mag : spectrum)
+        {
+            totalEnergy += mag;
+        }
+        
+        for (float harmonic : prediction.harmonics)
+        {
+            harmonicEnergy += harmonic;
+        }
+        
+        prediction.voicing = (totalEnergy > 0.0f) ? (harmonicEnergy / totalEnergy) : 0.0f;
+        prediction.confidence = juce::jlimit(0.0f, 1.0f, prediction.voicing * 2.0f);
     }
     
     return prediction;
 }
 
-void AIModelLoader::performSpectralAnalysis(const float* input, int numSamples, 
-                                           std::vector<float>& spectrum)
+void AIModelLoader::performSpectralAnalysis(const float* audio, int numSamples, std::vector<float>& spectrum)
 {
-    spectrum.resize(fftSize / 2 + 1, 0.0f);
+    // Zero-pad to FFT size
+    int paddedSize = fftSize;
+    std::vector<float> paddedAudio(paddedSize, 0.0f);
     
-    if (numSamples < fftSize)
+    int copySize = std::min(numSamples, paddedSize);
+    std::memcpy(paddedAudio.data(), audio, copySize * sizeof(float));
+    
+    // Apply window function (Hanning)
+    for (int i = 0; i < copySize; ++i)
     {
-        // Zero-pad input if too short
-        for (int i = 0; i < fftSize; ++i)
-        {
-            if (i < numSamples)
-                frequencyData[i] = dsp::Complex<float>(input[i], 0.0f);
-            else
-                frequencyData[i] = dsp::Complex<float>(0.0f, 0.0f);
-        }
-    }
-    else
-    {
-        // Take first fftSize samples
-        for (int i = 0; i < fftSize; ++i)
-        {
-            frequencyData[i] = dsp::Complex<float>(input[i], 0.0f);
-        }
+        float window = 0.5f * (1.0f - std::cos(2.0f * M_PI * i / (copySize - 1)));
+        paddedAudio[i] *= window;
     }
     
-    // Apply window
-    for (int i = 0; i < fftSize; ++i)
+    // Convert to complex numbers for FFT
+    for (int i = 0; i < paddedSize; ++i)
     {
-        float window = 0.5f * (1.0f - std::cos(Utils::TWO_PI * i / (fftSize - 1)));
-        frequencyData[i] = frequencyData[i] * window;
+        frequencyData[i].real(paddedAudio[i]);
+        frequencyData[i].imag(0.0f);
     }
     
     // Perform FFT
-    fft->performFrequencyOnlyForwardTransform(reinterpret_cast<float*>(frequencyData.getData()));
+    fft->performFrequencyOnlyForwardTransform(frequencyData.getData(), true);
     
     // Calculate magnitude spectrum
-    for (int i = 0; i < fftSize / 2 + 1; ++i)
+    spectrum.resize(paddedSize / 2);
+    for (int i = 0; i < paddedSize / 2; ++i)
     {
         float real = frequencyData[i].real();
         float imag = frequencyData[i].imag();
@@ -331,75 +289,78 @@ void AIModelLoader::performSpectralAnalysis(const float* input, int numSamples,
     }
 }
 
-void AIModelLoader::extractHarmonics(const std::vector<float>& spectrum, float fundamentalFreq,
-                                    std::vector<float>& harmonics)
+void AIModelLoader::extractHarmonics(const std::vector<float>& spectrum, float fundamental, std::vector<float>& harmonics)
 {
     harmonics.resize(16, 0.0f);
     
-    if (fundamentalFreq <= 0.0f || spectrum.empty())
+    if (fundamental <= 0.0f || spectrum.empty())
         return;
     
-    float binWidth = static_cast<float>(currentSampleRate) / fftSize;
+    float sampleRate = 44100.0f; // Assume fixed sample rate
+    float binWidth = sampleRate / (2.0f * spectrum.size());
     
-    for (int h = 1; h <= harmonics.size(); ++h)
+    for (int h = 1; h <= 16; ++h)
     {
-        float harmonicFreq = fundamentalFreq * h;
-        int bin = static_cast<int>(harmonicFreq / binWidth);
-        
-        if (bin < spectrum.size())
-        {
-            // Use peak around the expected harmonic frequency
-            float maxMag = 0.0f;
-            int searchRange = 3; // Search ±3 bins around expected frequency
+        float harmonicFreq = fundamental * h;
+        if (harmonicFreq >= sampleRate / 2.0f) // Above Nyquist
+            break;
             
-            for (int b = jmax(0, bin - searchRange); 
-                 b <= jmin(static_cast<int>(spectrum.size()) - 1, bin + searchRange); ++b)
-            {
-                maxMag = jmax(maxMag, spectrum[b]);
-            }
-            
-            harmonics[h - 1] = maxMag;
-        }
-    }
-    
-    // Normalize harmonics relative to fundamental
-    if (harmonics[0] > 0.0f)
-    {
-        for (float& harmonic : harmonics)
+        int binIndex = static_cast<int>(harmonicFreq / binWidth);
+        if (binIndex < spectrum.size())
         {
-            harmonic /= harmonics[0];
+            harmonics[h-1] = spectrum[binIndex];
         }
     }
 }
 
 void AIModelLoader::synthesizeHarmonics(float* output, int numSamples, const SynthesisParams& params)
 {
-    if (!synthesizer)
+    if (!synthesizer || params.fundamentalFreq <= 0.0f)
         return;
     
-    float phaseIncrement = Utils::TWO_PI * params.fundamentalFreq / currentSampleRate;
-    
-    for (int sample = 0; sample < numSamples; ++sample)
+    // Ensure we have enough harmonics
+    if (synthesizer->harmonicPhases.size() < 16)
     {
-        float harmonicSum = 0.0f;
+        synthesizer->harmonicPhases.resize(16, 0.0f);
+        synthesizer->harmonicFreqs.resize(16, 0.0f);
+        synthesizer->harmonicAmps.resize(16, 0.0f);
+    }
+    
+    // Update harmonic frequencies and amplitudes
+    for (int h = 0; h < 16; ++h)
+    {
+        synthesizer->harmonicFreqs[h] = params.fundamentalFreq * (h + 1);
+        synthesizer->harmonicAmps[h] = (h < params.harmonicAmplitudes.size()) ? 
+            params.harmonicAmplitudes[h] : 0.0f;
+    }
+    
+    float sampleRate = 44100.0f;
+    
+    // Generate harmonic content
+    for (int i = 0; i < numSamples; ++i)
+    {
+        float sample = 0.0f;
         
-        // Generate harmonics
-        for (int h = 0; h < synthesizer->harmonicPhases.size() && h < params.harmonicAmplitudes.size(); ++h)
+        for (int h = 0; h < 16; ++h)
         {
-            if (params.harmonicAmplitudes[h] > 0.0f)
+            if (synthesizer->harmonicAmps[h] > 0.001f && 
+                synthesizer->harmonicFreqs[h] < sampleRate / 2.0f)
             {
-                float harmonicFreq = params.fundamentalFreq * (h + 1);
-                float harmonicPhaseInc = phaseIncrement * (h + 1);
+                // Generate sine wave for this harmonic
+                sample += synthesizer->harmonicAmps[h] * 
+                         std::sin(synthesizer->harmonicPhases[h]);
                 
-                synthesizer->harmonicPhases[h] += harmonicPhaseInc;
-                if (synthesizer->harmonicPhases[h] > Utils::TWO_PI)
-                    synthesizer->harmonicPhases[h] -= Utils::TWO_PI;
+                // Update phase
+                synthesizer->harmonicPhases[h] += 2.0f * M_PI * 
+                                                 synthesizer->harmonicFreqs[h] / sampleRate;
                 
-                harmonicSum += std::sin(synthesizer->harmonicPhases[h]) * params.harmonicAmplitudes[h];
+                // Keep phase in range
+                if (synthesizer->harmonicPhases[h] > 2.0f * M_PI)
+                    synthesizer->harmonicPhases[h] -= 2.0f * M_PI;
             }
         }
         
-        output[sample] = harmonicSum * 0.1f; // Scale down to prevent clipping
+        output[i] = sample * params.loudness;
     }
 }
 
@@ -408,9 +369,10 @@ void AIModelLoader::synthesizeNoise(float* output, int numSamples, float noisine
     if (!synthesizer)
         return;
     
+    // Generate colored noise
     for (int i = 0; i < numSamples; ++i)
     {
-        // Generate filtered noise
+        // Generate white noise
         float noise = synthesizer->noiseGenerator.nextFloat() * 2.0f - 1.0f;
         
         // Simple low-pass filtering for more natural noise
@@ -474,9 +436,16 @@ float AIModelLoader::smoothPitchEstimate(float newPitch)
         return newPitch;
     }
     
-    // Apply smoothing to reduce jitter
+    // Apply exponential smoothing
     float smoothed = lastPitchEstimate * (1.0f - pitchSmoothing) + newPitch * pitchSmoothing;
-    lastPitchEstimate = smoothed;
     
+    // Add pitch to history
+    pitchHistory.push_back(smoothed);
+    if (pitchHistory.size() > 10)
+    {
+        pitchHistory.erase(pitchHistory.begin());
+    }
+    
+    lastPitchEstimate = smoothed;
     return smoothed;
 }

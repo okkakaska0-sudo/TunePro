@@ -45,8 +45,8 @@ public:
                         const SynthesisParams& params);
     
     // Model configuration
-    void setModelPath(const juce::String& path) { modelPath = path; }
-    juce::String getModelPath() const { return modelPath; }
+    void setModelPath(const String& path) { modelPath = path; }
+    String getModelPath() const { return modelPath; }
     
     // Processing settings
     void setProcessingBlockSize(int blockSize) { processingBlockSize = blockSize; }
@@ -54,7 +54,7 @@ public:
     
     // Performance monitoring
     float getCPUUsage() const { return cpuUsage; }
-    int64 getProcessingTimeMs() const { return processingTimeMs; }
+    int64_t getProcessingTimeMs() const { return processingTimeMs; }
 
 private:
     // Model state

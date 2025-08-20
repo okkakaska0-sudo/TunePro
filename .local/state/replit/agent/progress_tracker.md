@@ -1,13 +1,4 @@
-[x] 1. Проанализировать структуру macOS-only VST3/AU проекта
-[x] 2. Изучить документацию (replit.md, README_ASSISTANT.md)  
-[x] 3. Проверить компоненты: CMakeLists.txt, build_simple.sh, локальные библиотеки
-[x] 4. Настроить Replit для редактирования кода и документации (без сборки)
-[x] 5. Обновить replit.md с информацией о миграции
-[x] 6. Конфигурация .replit уже настроена (изменения запрещены системой)
-[x] 7. Проверить целостность всех файлов проекта
-[x] 8. Информировать пользователя о завершении миграции
-[x] 9. Установить CREPE, TensorFlow Lite, Rubber Band Library локально
-[x] 10. Обновить CMake для всех библиотек (только в этом файле)
-[x] 11. Проверить синтаксис всего кода и исправить ошибки
-[x] 12. Настроить build_simple.sh (только обновить, не создавать новый)
-[x] 13. Финальная проверка macOS конфигурации
+[x] 1. Install the required packages
+[x] 2. Restart the workflow to see if the project is working
+[x] 3. Verify the project is working using the feedback tool
+[x] 4. Inform user the import is completed and they can start building, mark the import as completed using the complete_project_import tool

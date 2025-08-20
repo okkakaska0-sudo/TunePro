@@ -1,6 +1,8 @@
 #include "PitchCorrectionEngine.h"
 #include "Utils.h"
 #include <algorithm>
+
+// Functions now available globally from JuceHeader.h
 #include <cstring>
 
 PitchCorrectionEngine::PitchCorrectionEngine()
@@ -262,7 +264,7 @@ float PitchCorrectionEngine::detectPitchAutocorrelation(const float* input, int 
     float maxCorrelation = 0.0f;
     int bestPeriod = minPeriod;
     
-    for (int period = minPeriod; period < jmin(maxPeriod, numSamples / 2); ++period)
+    for (int period = minPeriod; period < std::min(maxPeriod, numSamples / 2); ++period)
     {
         float correlation = 0.0f;
         float energy1 = 0.0f;
@@ -300,7 +302,7 @@ float PitchCorrectionEngine::detectPitchYIN(const float* input, int numSamples)
     if (numSamples < 200)
         return 0.0f;
     
-    int maxTau = jmin(numSamples / 2, static_cast<int>(currentSampleRate / 80.0));
+    int maxTau = std::min(numSamples / 2, static_cast<int>(currentSampleRate / 80.0));
     std::vector<float> yinBuffer(maxTau);
     
     // Step 1: Difference function
@@ -359,7 +361,7 @@ float PitchCorrectionEngine::detectPitchSpectral(const float* input, int numSamp
     int minBin = static_cast<int>(80.0f * fftSize / currentSampleRate);
     int maxBin = static_cast<int>(2000.0f * fftSize / currentSampleRate);
     
-    for (int i = minBin; i < jmin(maxBin, static_cast<int>(spectrum.size())); ++i)
+    for (int i = minBin; i < std::min(maxBin, static_cast<int>(spectrum.size())); ++i)
     {
         if (spectrum[i] > maxMagnitude)
         {
@@ -400,7 +402,7 @@ void PitchCorrectionEngine::pitchShiftPSOLA(float* audio, int numSamples, float 
     
     for (int pos = 0; pos < numSamples - frameSize; pos += hopSize)
     {
-        int frameEnd = jmin(pos + frameSize, numSamples);
+        int frameEnd = std::min(pos + frameSize, numSamples);
         int currentFrameSize = frameEnd - pos;
         
         // Apply Hann window
@@ -454,7 +456,7 @@ void PitchCorrectionEngine::pitchShiftGranular(float* audio, int numSamples, flo
         return;
     
     // Copy input to grain buffer
-    int grainSamples = jmin(grain->size, numSamples);
+    int grainSamples = std::min(grain->size, numSamples);
     std::memcpy(grain->buffer, audio, grainSamples * sizeof(float));
     
     // Process grain
@@ -516,7 +518,7 @@ void PitchCorrectionEngine::extractFormantEnvelope(const float* input, int numSa
         float sum = 0.0f;
         int count = 0;
         
-        for (int j = jmax(0, i - smoothingWindow); j <= jmin(static_cast<int>(spectrum.size()) - 1, i + smoothingWindow); ++j)
+        for (int j = std::max(0, i - smoothingWindow); j <= std::min(static_cast<int>(spectrum.size()) - 1, i + smoothingWindow); ++j)
         {
             sum += spectrum[j];
             ++count;
@@ -533,7 +535,7 @@ void PitchCorrectionEngine::applyFormantEnvelope(float* audio, int numSamples, c
     performFFT(audio, spectrum);
     
     // Apply formant envelope
-    for (int i = 0; i < jmin(spectrum.size(), formants.size()); ++i)
+    for (int i = 0; i < std::min(spectrum.size(), formants.size()); ++i)
     {
         if (formants[i] > 0.0f && spectrum[i] > 0.0f)
         {
@@ -595,7 +597,7 @@ void PitchCorrectionEngine::processGrain(GrainData& grain, float pitchRatio, flo
     {
         float sourceIndex = i / pitchRatio;
         int index1 = static_cast<int>(sourceIndex);
-        int index2 = jmin(index1 + 1, grain.size - 1);
+        int index2 = std::min(index1 + 1, grain.size - 1);
         
         if (index1 < grain.size)
         {

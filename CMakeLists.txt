@@ -73,7 +73,7 @@ endif()
 set_property(GLOBAL PROPERTY USE_FOLDERS YES)
 
 # Define plugin with comprehensive configuration
-juce_add_plugin(MarsiAutoTune
+marsi_add_plugin(MarsiAutoTune
     VERSION ${PROJECT_VERSION}
     COMPANY_NAME "MarsiStudio"
     COMPANY_WEBSITE "https://marsistudio.com"

@@ -1,0 +1,420 @@
+Last login: Thu Aug 21 00:00:59 on ttys000
+marselmacevans@iMac-Marsel ~ % cd /Users/marselmacevans/Downloads/TunePro
+chmod +x build_simple.sh
+./build_simple.sh
+🎵 Building MarsiAutoTune Plugin...
+================================================
+🍎 Detected platform: macOS
+📦 Using autonomous libraries (no internet required)
+🔍 Checking required tools...
+✅ CMake found: cmake version 4.1.0
+📚 Checking local libraries...
+✅ All required libraries found
+✅ Xcode Command Line Tools found
+📁 Creating build directory...
+⚙️  Configuring CMake for macOS...
+-- The CXX compiler identification is AppleClang 16.0.0.16000026
+-- The C compiler identification is AppleClang 16.0.0.16000026
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Downloading JUCE framework for macOS build...
+-- JUCE stub loaded - this will download actual JUCE on macOS build
+-- Using JUCE stub - will work fully on macOS
+-- Configuring plugin: MarsiAutoTune
+-- Version: 1.0.0
+-- Formats: AU;VST3;Standalone
+-- Company: MarsiStudio
+-- Created plugin target: MarsiAutoTune with 16 source files
+-- Plugin MarsiAutoTune configured successfully
+-- Configuring done (1.9s)
+-- Generating done (0.0s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    JUCE_MODULES_ONLY
+
+
+-- Build files have been written to: /Users/marselmacevans/Downloads/TunePro/build
+🔨 Building MarsiAutoTune...
+🚀 Using 4 CPU cores for parallel build...
+[  6%] Building CXX object CMakeFiles/MarsiAutoTune.dir/Source/AIModelLoader.cpp.o
+[ 18%] Building CXX object CMakeFiles/MarsiAutoTune.dir/Source/ModeSelector.cpp.o
+[ 18%] Building CXX object CMakeFiles/MarsiAutoTune.dir/Source/LookAndFeel.cpp.o
+[ 25%] Building CXX object CMakeFiles/MarsiAutoTune.dir/Source/AIModelLoader_backup.cpp.o
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader_backup.cpp:1:
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:3:
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:18:In file included from 32In file included from : /Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.cpp/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp::1error: 1:
+:
+In file included from In file included from /Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.hredefinition of 'AudioBuffer' as different kind of symbol/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h::3
+3:
+:
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:18:In file included from    3218: | /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.cpp : error:    1tredefinition of 'AudioBuffer' as different kind of symbole:
+mIn file included from p
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.hl:a3t:
+e</Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.ht:y18pe:n18   :3218:: |  32: a error: m e  tredefinition of 'AudioBuffer' as different kind of symbolTe>m
+ pcllaatses< tAyu   pd18ei | noaB um fe f  eTtr>e; mcpl
+al      sa| st e                               ^A<
+utdyipoeBnuafmfee rT;> c
+l      a| ss                               ^ 
+AudioBuf fer;error: 
+      redefinition of 'AudioBuffer' as different kind of symbol| 
+                               ^
+   18 |     template<typename T> class AudioBuffer;
+      |                                ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h::17:17:/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h11::17 :11:/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.hnote:  :17previous definition is here:11note: 
+: previous definition is here   17
+note:  |     previous definition is here 17  | 
+  c l    a17 s | cs l  aA su sdc ilAoauBsdusif ofABeuurdf;ifoe
+Br      u;| ff
+          ^e      
+r| ;          ^
+
+      |           ^
+11: note: previous definition is here
+   17 |     class AudioBuffer;
+      |           ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:19:37: error: expected ';' after alias declaration
+   19 |     using AudioBufferF = AudioBuffer<float>;
+      | /Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h                                    ^:
+19:      37| :                                     ;
+error: /Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:19expected ';' after alias declaration:37
+: error: expected ';' after alias declaration   
+19 |     using    19A | u d i o Buusfifnegr F/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.hA :u=19d A:u37d:i oBuerror: f/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.hexpected ';' after alias declaration:40
+:32: error: redefinition of 'Rectangle' as different kind of symbol   19
+ |       40  | u s i  templantge <AtuydpieonBaumfef eTr>F  c=l aAsusd ioBuffioRBeufffeeerrrF<< ff=ll ooAaauttd>>;i;oB
+u      
+f|       f| e                                    ^r
+                                    ^<
+f      l|       o| a                                    ;t
+                                    ;>
+;
+      |                                     ^
+      |                                     ;
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h::4040::3232::  error: error: redefinition of 'Rectangle' as different kind of symbolredefinition of 'Rectangle' as different kind of symbol/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h
+
+:40:32:       error: 4040 |  |   redefinition of 'Rectangle' as different kind of symbol    
+  tteem   m40pp | ll aa tt ee <<ttteyympppeelnnaaatmmeee<  tTTy>>p  eccnllaaamssess   TRR>ee cccttlaaansngsgl leRe;e;c
+t
+      a      | n| g                               ^l                               ^
+e
+;
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h      /Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:| :3939:                               ^:11
+11::  /Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:39:11: note: previous definition is herenote: 
+previous definition is here
+      3939 |  |      note:    cclcprevious definition is hereats
+asn gR   le39ec | ;t a n
+ g       l| cel;                               ^a
+s
+s       | Re          ^c
+ta/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.hn:g39l:e11;: 
+      | note:           ^previous definition is here
+
+   39 |     class Rectangle;
+      |           ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:41/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h::3341:: 33: error: lerror: aexpected ';' after alias declarationsexpected ';' after alias declarations
+ 
+Rect   a   41n41 | g |  l  e  ;   uu
+ss      ii| nngg          ^  
+RReeccttaanngglleeff  ==  RReeccttaannggllee<<ffllooaatt>>;;
+
+            | |                                 ^                                ^
+
+            | |                                 ;                                ;
+
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:41:33: error: expected ';' after alias declaration
+   41 |     us/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.hi:n42g: 33R:/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.he :c42t:aerror: 33n:g lexpected ';' after alias declarationef
+error:  =    expected ';' after alias declarationR42e | 
+c t a  nugslien<gf lRoeactt>a;nglei   /Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h =42  | R e 
+c       t|  aunsg                                ^il
+neg<       i| Rnetc>t;an
+g      l| ei                                ^ 
+=       R| ec                                ;t
+angl                                ;e<
+int>;
+      |                                 ^
+      |                                 ;
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:42:33: error: expected ';' after alias declaration
+   42 |     using Rectanglei = Rectangle<int>;
+      |                                 ^
+      |                                 ;
+:41:33: error: expected ';' after alias declaration
+   41 |     using Rectanglef = Rectangle<float>;
+      |                                 ^
+      |                                 ;
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:42:33: error: expected ';' after alias declaration
+   42 |     using Rectanglei = Rectangle<int>;
+      |                                 ^
+      |                                 ;
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:5:39: error: unknown class name 'LookAndFeel_V4'; did you mean 'LookAndFeel'?
+    5 | class ProAutoTuneLookAndFeel : public LookAndFeel_V4
+      |                                       ^~~~~~~~~~~~~~
+      |                                       LookAndFeel
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:35:11: note: 'LookAndFeel' declared here
+   35 |     class LookAndFeel;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:5:39: error: base class has incomplete type
+    5 | class ProAutoTuneLookAndFeel : public LookAndFeel_V4
+      |                                ~~~~~~~^~~~~~~~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:35:11: note: forward declaration of 'juce::LookAndFeel'
+   35 |     class LookAndFeel;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:9:31: error: only virtual member functions can be marked 'override'
+    9 |     ~ProAutoTuneLookAndFeel() override;
+      |                               ^~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:14:64: error: only virtual member functions can be marked 'override'
+   14 |                          float rotaryEndAngle, Slider& slider) override;
+      |                                                                ^~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:18:32: error: incomplete type 'juce::Slider' named in nested name specifier
+   18 |                          const Slider::SliderStyle style, Slider& slider) override;
+      |                                ^~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:31:11: note: forward declaration of 'juce::Slider'
+   31 |     class Slider;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:22:95: error: only virtual member functions can be marked 'override'
+   22 |                              bool shouldDrawButtonAsHighlighted, bool shouldDrawButtonAsDown) override;
+      |                                                                                               ^~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:24:38: error: unknown type name 'TextButton'
+   24 |     void drawButtonText(Graphics& g, TextButton& button, bool shouldDrawButtonAsHighlighted,
+      |                                      ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:30:37: error: only virtual member functions can be marked 'override'
+   30 |                      ComboBox& box) override;
+      |                                     ^~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:33:47: error: only virtual member functions can be marked 'override'
+   33 |     void drawLabel(Graphics& g, Label& label) override;
+      |                                               ^~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:36:48: error: expected ')'
+   36 |     void drawVintageKnob(Graphics& g, Rectangle<float> bounds, float sliderPos,
+      |                                                ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:36:25: note: to match this '('
+   36 |     void drawVintageKnob(Graphics& g, Rectangle<float> bounds, float sliderPos,
+      |                         ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:40:47: error: expected ')'
+   40 |     void drawMetalFrame(Graphics& g, Rectangle<float> bounds, float cornerSize = 5.0f);
+      |                                               ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:40:24: note: to match this '('
+   40 |     void drawMetalFrame(Graphics& g, Rectangle<float> bounds, float cornerSize = 5.0f);
+      |                        ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:41:49: error: expected ')'
+   41 |     void drawGlossyButton(Graphics& g, Rectangle<float> bounds, bool isPressed, 
+      |                                                 ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:41:26: note: to match this '('
+   41 |     void drawGlossyButton(Graphics& g, Rectangle<float> bounds, bool isPressed, 
+      |                          ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:43:44: error: expected ')'
+   43 |     void drawVUMeter(Graphics& g, Rectangle<float> bounds, float level, 
+      |                                            ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:43:21: note: to match this '('
+   43 |     void drawVUMeter(Graphics& g, Rectangle<float> bounds, float level, 
+      |                     ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:64:5: error: use of undeclared identifier 'std'
+   64 |     std::unique_ptr<Drawable> logoDrawable;
+      |     ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make[2]: *** [CMakeFiles/MarsiAutoTune.dir/Source/LookAndFeel.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:57:5: error: unknown type name 'int64'
+   57 |     int64 getProcessingTimeMs() const { return processingTimeMs; }
+      |     ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:62:18: error: field has incomplete type 'juce::String'
+   62 |     juce::String modelPath;
+      |                  ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:9:11: note: forward declaration of 'juce::String'
+    9 |     class String;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:71:5: error: unknown type name 'int64'
+   71 |     int64 processingTimeMs = 0;
+      |     ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:72:16: error: field has incomplete type 'juce::Time'
+   72 |     juce::Time lastProcessTime;
+      |                ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:13:11: note: forward declaration of 'juce::Time'
+   13 |     class Time;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:75:22: error: expected member name or ';' after declaration specifiers
+   75 |     juce::AudioBuffer<float> processBuffer;
+      |     ~~~~~~~~~~~~~~~~~^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:76:22: error: expected member name or ';' after declaration specifiers
+   76 |     juce::AudioBuffer<float> analysisBuffer;
+      |     ~~~~~~~~~~~~~~~~~^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:4:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:56:5: error: use of undeclared identifier 'AudioProcessorValueTreeState'
+   56 |     AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+      |     ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader_backup.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:57:5: error: unknown type name 'int64'
+   57 |     int64 getProcessingTimeMs() const { return processingTimeMs; }
+      |     ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:62:18: error: field has incomplete type 'juce::String'
+   62 |     juce::String modelPath;
+      |                  ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:9:11: note: forward declaration of 'juce::String'
+    9 |     class String;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:6:29: error: base class has incomplete type
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader_backup.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:71:5: error: unknown type name 'int64'
+   71 |     int64 processingTimeMs = 0;
+      |     ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:72:16: error: field has incomplete type 'juce::Time'
+   72 |     juce::Time lastProcessTime;
+      |                ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:13:11: note: forward declaration of 'juce::Time'
+   13 |     class Time;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader_backup.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:75:22: error: expected member name or ';' after declaration specifiers
+   75 |     juce::AudioBuffer<float> processBuffer;
+      |     ~~~~~~~~~~~~~~~~~^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:76:22: error: expected member name or ';' after declaration specifiers
+   76 |     juce::AudioBuffer<float> analysisBuffer;
+      |     ~~~~~~~~~~~~~~~~~^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:85:27: error: no member named 'dsp' in namespace 'juce'
+   85 |     std::unique_ptr<juce::dsp::FFT> fft;
+      |                     ~~~~~~^
+    6 | class ModeSelecto/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.hr:85:27: error: no member named 'dsp' in namespace 'juce'
+   85 |     std::unique_ptr<juce::dsp::FFT> fft;
+      |                     ~~~~~~^
+ : public Component,
+      |                      ~~~~~~~^~~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:30:11: note: forward declaration of 'juce::Component'
+   30 |     class Component;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:7:28: error: incomplete type 'juce::ComboBox' named in nested name specifier
+    7 |                     public ComboBox::Listener
+      |                            ^~~~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:34:11: note: forward declaration of 'juce::ComboBox'
+   34 |     class ComboBox;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:7:38: error: expected class name
+    7 |                     public ComboBox::Listener
+      |                                      ^
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:11:21: error: only virtual member functions can be marked 'override'
+   11 |     ~ModeSelector() override;
+      |                     ^~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:14:29: error: only virtual member functions can be marked 'override'
+   14 |     void paint(Graphics& g) override;
+      |                             ^~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:15:20: error: only virtual member functions can be marked 'override'
+   15 |     void resized() override;
+      |                    ^~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:18:60: error: only virtual member functions can be marked 'override'
+   18 |     void comboBoxChanged(ComboBox* comboBoxThatHasChanged) override;
+      |                                                            ^~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:86:11: error: no template named 'HeapBlock' in namespace 'juce'
+   86 |     juce::HeapBlock<juce::dsp::Complex<float>> frequencyData;
+      |     ~~~~~~^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:86:27: error: no member named 'dsp' in namespace 'juce'
+   86 |     juce::HeapBlock<juce::dsp::Complex<float>> frequencyData;
+      |                     ~~~~~~^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:86:45: error: expected '(' for function-style cast or type construction
+   86 |     juce::HeapBlock<juce::dsp::Complex<float>> frequencyData;
+      |                                        ~~~~~^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:86:46: error: expected member name or ';' after declaration specifiers
+   86 |     juce::HeapBlock<juce::dsp::Complex<float>> frequencyData;
+      |     ~~~~~~~~~~~~~~~                          ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:99:22: error: field has incomplete type 'juce:/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:86:11: error: no template named 'HeapBlock' in namespace 'juce'
+   86 |     juce::HeapBlock<juce::dsp::Complex<float>> frequencyData;
+      |     ~~~~~~^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:86:27: error: no member named 'dsp' in namespace 'juce'
+   86 |     juce::HeapBlock<juce::dsp::Complex<float>> frequencyData;
+      |                     ~~~~~~^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:86:45: error: expected '(' for function-style cast or type construction
+   86 |     juce::HeapBlock<juce::dsp::Complex<float>> frequencyData;
+      |                                        ~~~~~^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:86:46: error: expected member name or ';' after declaration specifiers
+   86 |     juce::HeapBlock<juce::dsp::Complex<float>> frequencyData;
+      |     ~~~~~~~~~~~~~~~                          ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:99:22: error: field has incomplete type 'juce:/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:25:10: error: no template named 'function' in namespace 'std'
+   25 |     std::function<void(Parameters::Mode)> onModeChanged;
+      |     ~~~~~^
+:Random'
+   99 |         juce::Random noiseGenerator;
+      |                      ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:12:11: note: forward declaration of 'juce::Random'
+   12 |     class Random;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:103:26: error: expected member name or ';' after declaration specifiers
+  103 |         juce::AudioBuffer<float> reverbBuffer;
+      |         ~~~~~~~~~~~~~~~~~^
+:Random'
+   99 |         juce::Random noiseGenerator;
+      |                      ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:12:11: note: forward declaration of 'juce::Random'
+   12 |     class Random;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader_backup.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:103:26: error: expected member name or ';' after declaration specifiers
+  103 |         juce::AudioBuffer<float> reverbBuffer;
+      |         ~~~~~~~~~~~~~~~~~^
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:28:36: error: unknown type name 'StringArray'
+   28 |     void setModeDescriptions(const StringArray& descriptions);
+      |                                    ^
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:32:14: error: field has incomplete type 'ComboBox'
+   32 |     ComboBox modeComboBox;
+      |              ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:34:11: note: forward declaration of 'juce::ComboBox'
+   34 |     class ComboBox;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:33:11: error: field has incomplete type 'Label'
+   33 |     Label titleLabel;
+      |           ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:33:11: note: forward declaration of 'juce::Label'
+   33 |     class Label;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:34:11: error: field has incomplete type 'Label'
+   34 |     Label descriptionLabel;
+      |           ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:33:11: note: forward declaration of 'juce::Label'
+   33 |     class Label;
+      |           ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:49:18: error: incomplete result type 'juce::String' in function definition
+   49 |     juce::String getModelPath() const { return modelPath; }
+      |                  ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:9:11: note: forward declaration of 'juce::String'
+    9 |     class String;
+      |           ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:49:18: error: incomplete result type 'juce::String' in function definition
+   49 |     juce::String getModelPath() const { return modelPath; }
+      |                  ^
+/Users/marselmacevans/Downloads/TunePro/JuceLibraryCode/JuceHeader.h:9:11: note: forward declaration of 'juce::String'
+    9 |     class String;
+      |           ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:37:5: error: unknown type name 'StringArray'
+   37 |     StringArray modeDescriptions;
+      |     ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make[2]: *** [CMakeFiles/MarsiAutoTune.dir/Source/ModeSelector.cpp.o] Error 1
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+20 errors generated.
+make[2]: *** [CMakeFiles/MarsiAutoTune.dir/Source/AIModelLoader.cpp.o] Error 1
+make[2]: *** [CMakeFiles/MarsiAutoTune.dir/Source/AIModelLoader_backup.cpp.o] Error 1
+make[1]: *** [CMakeFiles/MarsiAutoTune.dir/all] Error 2
+make: *** [all] Error 2
+marselmacevans@iMac-Marsel TunePro % 
