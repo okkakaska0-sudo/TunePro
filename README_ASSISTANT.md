@@ -48,6 +48,8 @@ Professional VST3/AU AutoTune plugin for macOS with three processing modes (Clas
 
 **КРИТИЧЕСКИ ВАЖНО**: После миграции проект работает с настоящим JUCE в development среде, но остается macOS-only для production сборки.
 
+**ОБНОВЛЕНИЕ (21.08.2025)**: Исправлена проблема macOS компиляции - JuceHeader.h теперь единообразно использует /tmp/JUCE на обеих платформах и включает все необходимые JucePlugin_* определения.
+
 ### ✅ Completed Core Features:
 - **Audio Processing Engine**: Complete with three distinct modes
 - **AI Integration**: CREPE pitch detection + ONNX runtime + DDSP synthesis  

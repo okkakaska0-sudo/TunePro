@@ -3,11 +3,38 @@
 // JUCE Library header for MarsiAutoTune
 // This provides cross-platform JUCE access
 
-#ifdef __APPLE__
-// On macOS, use full JUCE installation
-#include <JuceHeader.h>
-#else
-// On Linux, use downloaded JUCE from /tmp/JUCE
+// Define plugin metadata that JUCE expects
+#define JucePlugin_Name                   "MarsiAutoTune"
+#define JucePlugin_Desc                   "Professional Auto-Tune Plugin"  
+#define JucePlugin_Manufacturer           "MarsiStudio"
+#define JucePlugin_ManufacturerWebsite    "https://marsistudio.com"
+#define JucePlugin_ManufacturerEmail      "support@marsistudio.com"
+#define JucePlugin_ManufacturerCode       0x4d617273  // 'Mars'
+#define JucePlugin_PluginCode             0x4d415454  // 'MATT'
+#define JucePlugin_IsSynth                0
+#define JucePlugin_WantsMidiInput         1
+#define JucePlugin_ProducesMidiOutput     0
+#define JucePlugin_IsMidiEffect           0
+#define JucePlugin_EditorRequiresKeyboardFocus  1
+#define JucePlugin_Version                1.0.0
+#define JucePlugin_VersionCode            0x10000
+#define JucePlugin_VersionString          "1.0.0"
+#define JucePlugin_VSTUniqueID            JucePlugin_PluginCode
+#define JucePlugin_VSTCategory            kPlugCategEffect
+#define JucePlugin_Vst3Category           "Fx"
+#define JucePlugin_AUMainType             'aufx'
+#define JucePlugin_AUSubType              JucePlugin_PluginCode
+#define JucePlugin_AUExportPrefix         MarsiAutoTuneAU
+#define JucePlugin_AUExportPrefixQuoted   "MarsiAutoTuneAU"
+#define JucePlugin_AUManufacturerCode     JucePlugin_ManufacturerCode
+#define JucePlugin_CFBundleIdentifier     com.marsistudio.MarsiAutoTune
+#define JucePlugin_AAXIdentifier          com.marsistudio.MarsiAutoTune
+#define JucePlugin_AAXManufacturerCode    JucePlugin_ManufacturerCode
+#define JucePlugin_AAXProductId           JucePlugin_PluginCode
+#define JucePlugin_AAXCategory            2048  // ePlugInCategory_Effect
+#define JucePlugin_RTASCategory           2048
+
+// Both platforms use /tmp/JUCE for consistency  
 #define JUCE_GLOBAL_MODULE_SETTINGS_INCLUDED 1
 
 #include "/tmp/JUCE/modules/juce_core/juce_core.h"
@@ -26,6 +53,18 @@
 // Use the JUCE namespace 
 using namespace juce;
 
+// Linux-specific stubs for development only
+#ifndef __APPLE__
+class MarsiLogger {
+public:
+    static void writeToLog(const std::string& message) {
+        std::cout << "[MarsiLogger] " << message << std::endl;
+    }
+    
+    static void log(const std::string& message) {
+        writeToLog(message);
+    }
+};
 #endif // __APPLE__
 
 // Binary data declarations for embedded assets

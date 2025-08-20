@@ -1,0 +1,434 @@
+Last login: Thu Aug 21 00:02:37 on ttys000
+marselmacevans@iMac-Marsel ~ % cd /Users/marselmacevans/Downloads/TunePro
+chmod +x build_simple.sh
+./build_simple.sh
+🎵 Building MarsiAutoTune Plugin...
+================================================
+🍎 Detected platform: macOS
+📦 Using autonomous libraries (no internet required)
+🔍 Checking required tools...
+✅ CMake found: cmake version 4.1.0
+📚 Checking local libraries...
+✅ All required libraries found
+✅ Xcode Command Line Tools found
+📁 Creating build directory...
+⚙️  Configuring CMake for macOS...
+-- The CXX compiler identification is AppleClang 16.0.0.16000026
+-- The C compiler identification is AppleClang 16.0.0.16000026
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Downloading JUCE framework for macOS build...
+-- JUCE loaded from GitHub for macOS build
+-- Using JUCE stub - will work fully on macOS
+-- Configuring plugin: MarsiAutoTune
+-- Version: 1.0.0
+-- Formats: AU;VST3;Standalone
+-- Company: MarsiStudio
+-- Found  source files for MarsiAutoTune
+-- Plugin MarsiAutoTune configured successfully
+-- Configuring done (62.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: /Users/marselmacevans/Downloads/TunePro/build
+🔨 Building MarsiAutoTune...
+🚀 Using 4 CPU cores for parallel build...
+[  6%] Building CXX object CMakeFiles/MarsiAutoTune.dir/Source/AIModelLoader.cpp.o
+[  6%] Building CXX object CMakeFiles/MarsiAutoTune.dir/Source/ModeSelector.cpp.o
+[ 12%] Building CXX object CMakeFiles/MarsiAutoTune.dir/Source/LookAndFeel.cpp.o
+[ 12%] Building CXX object CMakeFiles/MarsiAutoTune.dir/Source/Parameters.cpp.o
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:5:39: error: expected class name
+    5 | class ProAutoTuneLookAndFeel : public LookAndFeel_V4
+      |                                       ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:9:31: error: only virtual member functions can be marked 'override'
+    9 |     ~ProAutoTuneLookAndFeel() override;
+      |                               ^~~~~~~~
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:12:27: error: unknown type name 'Graphics'
+   12 |     void drawRotarySlider(Graphics& g, int x, int y, int width, int height,
+      |                           ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:14:48: error: unknown type name 'Slider'
+   14 |                          float rotaryEndAngle, Slider& slider) override;
+      |                                                ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:16:27: error: unknown type name 'Graphics'
+   16 |     void drawLinearSlider(Graphics& g, int x, int y, int width, int height,
+      |                           ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:18:32: error: use of undeclared identifier 'Slider'
+   18 |                          const Slider::SliderStyle style, Slider& slider) override;
+      |                                ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:18:59: error: unknown type name 'Slider'
+   18 |                          const Slider::SliderStyle style, Slider& slider) override;
+      |                                                           ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:21:31: error: unknown type name 'Graphics'
+   21 |     void drawButtonBackground(Graphics& g, Button& button, const Colour& backgroundColour,
+      |                               ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:21:44: error: unknown type name 'Button'
+   21 |     void drawButtonBackground(Graphics& g, Button& button, const Colour& backgroundColour,
+      |                                            ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:21:66: error: unknown type name 'Colour'
+   21 |     void drawButtonBackground(Graphics& g, Button& button, const Colour& backgroundColour,
+      |                                                                  ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:24:25: error: unknown type name 'Graphics'
+   24 |     void drawButtonText(Graphics& g, TextButton& button, bool shouldDrawButtonAsHighlighted,
+      |                         ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:24:38: error: unknown type name 'TextButton'
+   24 |     void drawButtonText(Graphics& g, TextButton& button, bool shouldDrawButtonAsHighlighted,
+      |                                      ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:28:23: error: unknown type name 'Graphics'
+   28 |     void drawComboBox(Graphics& g, int width, int height, bool isButtonDown,
+      |                       ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:30:22: error: unknown type name 'ComboBox'
+   30 |                      ComboBox& box) override;
+      |                      ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:33:20: error: unknown type name 'Graphics'
+   33 |     void drawLabel(Graphics& g, Label& label) override;
+      |                    ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:33:33: error: unknown type name 'Label'
+   33 |     void drawLabel(Graphics& g, Label& label) override;
+      |                                 ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:36:26: error: unknown type name 'Graphics'
+   36 |     void drawVintageKnob(Graphics& g, Rectangle<float> bounds, float sliderPos,
+      |                          ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:36:39: error: no template named 'Rectangle'
+   36 |     void drawVintageKnob(Graphics& g, Rectangle<float> bounds, float sliderPos,
+      |                                       ^
+/Users/marselmacevans/Downloads/TunePro/Source/LookAndFeel.h:38:31: error: unknown type name 'Colour'
+   38 |                         const Colour& knobColour);
+      |                               ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make[2]: *** [CMakeFiles/MarsiAutoTune.dir/Source/LookAndFeel.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:10:18: error: unknown type name 'String'; did you mean 'std::string'?
+   10 |     static const String SPEED_ID;
+      |                  ^~~~~~
+      |                  std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:4:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:10:18: error: unknown type name 'String'; did you mean 'std::string'?
+   10 |     static const String SPEED_ID;
+      |                  ^~~~~~
+      |                  std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:11:18: error: unknown type name 'String'; did you mean 'std::string'?
+   11 |     static const String AMOUNT_ID;
+      |                  ^~~~~~
+      |                  std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:4:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:11:18: error: unknown type name 'String'; did you mean 'std::string'?
+   11 |     static const String AMOUNT_ID;
+      |                  ^~~~~~
+      |                  std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:48:29: error: unknown type name 'String'; did you mean 'std::string'?
+   48 |     void setModelPath(const String& path) { modelPath = path; }
+      |                             ^~~~~~
+      |                             std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:12:18: error: unknown type name 'String'; did you mean 'std::string'?
+   12 |     static const String MODE_ID;
+      |                  ^~~~~~
+      |                  std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:4:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:12:18: error: unknown type name 'String'; did you mean 'std::string'?
+   12 |     static const String MODE_ID;
+      |                  ^~~~~~
+      |                  std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:49:5: error: unknown type name 'String'; did you mean 'std::string'?
+   49 |     String getModelPath() const { return modelPath; }
+      |     ^~~~~~
+      |     std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:13:18: error: unknown type name 'String'; did you mean 'std::string'?
+   13 |     static const String KEY_ID;
+      |                  ^~~~~~
+      |                  std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:4:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:13:18: error: unknown type name 'String'; did you mean 'std::string'?
+   13 |     static const String KEY_ID;
+      |                  ^~~~~~
+      |                  std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:62:5: error: use of undeclared identifier 'juce'
+   62 |     juce::String modelPath;
+      |     ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:14:18: error: unknown type name 'String'; did you mean 'std::string'?
+   14 |     static const String SCALE_ID;
+      |                  ^~~~~~
+      |                  std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:4:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:14:18: error: unknown type name 'String'; did you mean 'std::string'?/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:
+71:5:    14error:  |   unknown type name 'int64'  
+stat   i71c |   c o n sitn tS6t4r ipnrgo cSeCsAsLiEn_gITDi;me
+M      s|  =                 ^~~~~~ 
+0;      | 
+                       std::string| 
+    ^
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:72:5: error: use of undeclared identifier 'juce'
+   72 |     juce::Time lastProcessTime;
+      |     ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:75:5: error: use of undeclared identifier 'juce'
+   75 |     juce::AudioBuffer<float> processBuffer;
+      |     ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:76:5: error: use of undeclared identifier 'juce'
+   76 |     juce::AudioBuffer<float> analysisBuffer;
+      |     ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:56:5: error: use of undeclared identifier 'AudioProcessorValueTreeState'
+   56 |     AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+      |     ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:4:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:56:5: error: use of undeclared identifier 'AudioProcessorValueTreeState'
+   56 |     AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+      |     ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:85:21: error: use of undeclared identifier 'juce'
+   85 |     std::unique_ptr<juce::dsp::FFT> fft;
+      |                     ^
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:60:12: error: unknown type name 'String'; did you mean 'std::string'?
+   60 |     static String getModeName(Mode mode);
+      |            ^~~~~~
+      |            std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:60:12: error: unknown type name 'String'; did you mean 'std::string'?
+   60 |     static String getModeName(Mode mode);
+      |            ^~~~~~
+      |            std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:86:5: error: use of undeclared identifier 'juce'
+   86 |     juce::HeapBlock<juce::dsp::Complex<float>> frequencyData;
+      |     ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:61:12: error: unknown type name 'String'; did you mean 'std::string'?
+   61 |     static String getKeyName(Key key);
+      |            ^~~~~~
+      |            std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:86:21: error: use of undeclared identifier 'juce'
+   86 |     juce::HeapBlock<juce::dsp::Complex<float>> frequencyData;
+      |                     ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:86:45: error: expected '(' for function-style cast or type construction
+   86 |     juce::HeapBlock<juce::dsp::Complex<fIn file included from loat>/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp>: 1f:
+rIn file included from e/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.hq:u4e:
+nc/Users/marselmacevans/Downloads/TunePro/Source/Parameters.hy:D61a:t12a:; 
+      error: |                                        ~~~~~^unknown type name 'String'; did you mean 'std::string'?
+
+   61 |  /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h : 86 :s46t:a ticerror:  Stexpected member name or ';' after declaration specifiersri
+ng ge   t86K | e y N a mjeu(cKee:y: Hkeeayp)B;lo
+c      k| <j           ^~~~~~u
+ce      :| :d           std::strings
+p::Comple/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+x<float>> frequencyData;
+      |     ~~~~~~~~~~~~~~~                          ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:62:12: error: unknown type name 'String'; did you mean 'std::string'?
+   62 |     static String getScaleName(Scale scale);
+      |            ^~~~~~
+      |            std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:4:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:62:12: error: unknown type name 'String'; did you mean 'std::string'?
+   62 |     static String getScaleName(Scale scale);
+      |            ^~~~~~
+      |            std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:99:9: error: use of undeclared identifier 'juce'
+   99 |         juce::Random noiseGenerator;
+      |         ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:103:9: error: use of undeclared identifier 'juce'
+  103 |         juce::AudioBuffer<float> reverbBuffer;
+      |         ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:70:5: error: unknown type name 'JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR'
+   70 |     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Parameters)
+      |     ^
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:70:61: error: expected ';' at end of declaration list
+   70 |     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Parameters)
+      |                                                             ^
+      |                                                             ;
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:4:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:70:5: error: unknown type name 'JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR'
+   70 |     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Parameters)
+      |     ^
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:70:61: error: expected ';' at end of declaration list
+   70 |     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Parameters)
+      |                                                             ^
+      |                                                             ;
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:4:7: error: unknown type name 'String'; did you mean 'std::string'?
+    4 | const String Parameters::SPEED_ID = "speed";
+      |       ^~~~~~
+      |       std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.cpp:1:
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:6:29: error: expected class name
+    6 | class ModeSelector : public Component,
+      |                             ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:132:5: error: unknown type name 'JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR'
+  132 |     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AIModelLoader)
+      |     ^
+/Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.h:132:64: error: expected ';' at end of declaration list
+  132 |     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AIModelLoader)
+      |                                                                ^
+      |                                                                ;
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:7:28: error: use of undeclared identifier 'ComboBox'
+    7 |                     public ComboBox::Listener
+      |                            ^
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:7:38: error: expected class name
+    7 |                     public ComboBox::Listener
+      |                                      ^
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:5:7: error: unknown type name 'String'; did you mean 'std::string'?
+    5 | const String/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h :P11a:r21a:m eteerror: rs:only virtual member functions can be marked 'override':A
+   11 |     ~ModeSelector(M)O UoNvTe_rIrDi d=e ;"a
+m      o| un                    ^~~~~~~~t
+";
+      |       ^~~~~~
+      |       std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:14:16: error: unknown type name 'Graphics'
+   14 |     void paint(Graphics& g) override;
+      |                ^
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:6:7: error: unknown type name 'String'; did you mean 'std::string'?
+    6 | const String Parameters::MODE_ID = "mode";
+      |       ^~~~~~
+      |       std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:15:20: error: only virtual member functions can be marked 'override'
+   15 |     void resized() override;
+      |                    ^~~~~~~~
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.cpp:2:
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/Utils.h:4:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:10:18: error: unknown type name 'String'; did you mean 'std::string'?
+   10 |     static const String SPEED_ID;
+      |                  ^~~~~~
+      |                  std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:7:7: error: unknown type name 'String'; did you mean 'std::string'?
+    7 | const String Parameters::KEY_ID = "key";
+      |       ^~~~~~
+      |       std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:18:26: error: unknown type name 'ComboBox'
+   18 |     void comboBoxChanged(ComboBox* comboBoxThatHasChanged) override;
+      |                          ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.cpp:2:
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/Utils.h:4:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:11:18: error: unknown type name 'String'; did you mean 'std::string'?
+   11 |     static const String AMOUNT_ID;
+      |                  ^~~~~~
+      |                  std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:8:7: error: unknown type name 'String'; did you mean 'std::string'?
+    8 | const String Parameters::SCALE_ID = "scale";
+      |       ^~~~~~
+      |       std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/AIModelLoader.cpp:2:
+In file included from /Users/marselmacevans/Downloads/TunePro/Source/Utils.h:4:
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.h:12:18: error: unknown type name 'String'; did you mean 'std::string'?
+   12 |     static const String MODE_ID;
+      |                  ^~~~~~
+      |                  std::string
+/Volumes/MarselHard/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__fwd/string.h:48:7: note: 'std::string' declared here
+   48 | using string = basic_string<char>;
+      |       ^
+/Users/marselmacevans/Downloads/TunePro/Source/ModeSelector.h:25:10: error: no template named 'function' in namespace 'std'
+   25 |     std::function<void(Parameters::Mode)> onModeChanged;
+      |     ~~~~~^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:19:1: error: use of undeclared identifier 'AudioProcessorValueTreeState'
+   19 | AudioProcessorValueTreeState::ParameterLayout Parameters::createParameterLay20out( error)
+s       generated| .
+^
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:21:33: error: use of undeclared identifier 'RangedAudioParameter'
+   21 |     std::vector<std::unique_ptr<RangedAudioParameter>> parameters;
+      |                                 ^
+make[2]: *** [CMakeFiles/MarsiAutoTune.dir/Source/ModeSelector.cpp.o] Error 1
+/Users/marselmacevans/Downloads/TunePro/Source/Parameters.cpp:24:43: error: use of undeclared identifier 'AudioParameterFloat'
+   24 |     parameters.push_back(std::make_unique<AudioParameterFloat>(
+      |                                           ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+make[2]: *** [CMakeFiles/MarsiAutoTune.dir/Source/Parameters.cpp.o] Error 1
+20 errors generated.
+make[2]: *** [CMakeFiles/MarsiAutoTune.dir/Source/AIModelLoader.cpp.o] Error 1
+make[1]: *** [CMakeFiles/MarsiAutoTune.dir/all] Error 2
+make: *** [all] Error 2
+marselmacevans@iMac-Marsel TunePro % 

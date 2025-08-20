@@ -531,6 +531,14 @@ JUCE_MODULES_DIR:INTERNAL=/tmp/JUCE/modules
 //The target architecture, used to name internal folders in VST3
 // bundles, and to locate bundled libraries in modules
 JUCE_TARGET_ARCHITECTURE:INTERNAL=Change Dir: '/home/runner/workspace/build/JUCE/JUCE_BUILD/CMakeFiles/CMakeTmp'
+# WARNING: Value of JUCE_TARGET_ARCHITECTURE contained a newline
+#  and was truncated. Original value:
+# Change Dir: '/home/runner/workspace/build/JUCE/JUCE_BUILD/CMakeFiles/CMakeTmp'
+# \n
+# \nRun Build Command(s): /nix/store/29ax4k0a83zhz43lb73cv610d95wdsx1-cmake-3.31.6/bin/cmake -E env VERBOSE=1 /nix/store/sjknb41ia8lpxszww85gyhy1xdhcl57d-gnumake-4.4.1/bin/make -f Makefile cmTC_081d1/fast
+# \nmake: *** No rule to make target 'cmTC_081d1/fast'.  Stop.
+# \n
+# \n
 //ADVANCED property for variable: PKG_CONFIG_ARGN
 PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
@@ -550,7 +558,7 @@ __pkg_config_checked_juce_audio_devices_LINUX_DEPS:INTERNAL=1
 __pkg_config_checked_juce_graphics_LINUX_DEPS:INTERNAL=1
 __pkg_config_checked_juce_opengl_LINUX_DEPS:INTERNAL=1
 //Result of TRY_COMPILE
-compile_result:INTERNAL=TRUE
+compile_result:INTERNAL=FALSE
 juce_audio_devices_LINUX_DEPS_CFLAGS:INTERNAL=-I/nix/store/b5bm58i52zjigdxq4m3am4f57r8ila21-alsa-lib-1.2.13-dev/include
 juce_audio_devices_LINUX_DEPS_CFLAGS_I:INTERNAL=
 juce_audio_devices_LINUX_DEPS_CFLAGS_OTHER:INTERNAL=

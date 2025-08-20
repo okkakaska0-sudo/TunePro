@@ -60,13 +60,13 @@ function(marsi_add_plugin target)
     
     message(STATUS "Found ${list_length} source files for ${target}")
     
-    # Создаем цель с помощью стандартного JUCE
-    if(TARGET juce::juce_audio_basics AND COMMAND juce_add_plugin)
-        # Используем оригинальную JUCE функцию если доступна
-        cmake_language(CALL juce_add_plugin ${target} ${ARGN})
+    # На macOS используем настоящий JUCE, в Linux создаем простую цель
+    if(APPLE)
+        # На macOS используем настоящую JUCE функцию
+        juce_add_plugin(${target} ${ARGN})
         set(JUCE_TARGET_CREATED TRUE)
     else()
-        # Создаем цель вручную для stub режима
+        # В Linux создаем цель вручную для development
         add_library(${target} SHARED)
         set(JUCE_TARGET_CREATED FALSE)
     endif()
