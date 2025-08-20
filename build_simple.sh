@@ -43,6 +43,25 @@ command -v cmake >/dev/null 2>&1 || {
 
 echo "✅ CMake found: $(cmake --version | head -n1)"
 
+# Check that all libraries are present
+echo "📚 Checking local libraries..."
+if [ ! -f "libs/tensorflow_lite/tensorflow_lite.h" ]; then
+    echo "❌ TensorFlow Lite library not found"
+    exit 1
+fi
+
+if [ ! -f "libs/rubberband/rubberband.h" ]; then
+    echo "❌ Rubber Band Library not found"
+    exit 1
+fi
+
+if [ ! -f "libs/crepe/crepe.h" ]; then
+    echo "❌ CREPE library not found"
+    exit 1
+fi
+
+echo "✅ All required libraries found"
+
 # Platform-specific compiler checks
 if [[ "$PLATFORM" == "macOS" ]]; then
     command -v xcode-select >/dev/null 2>&1 || { 

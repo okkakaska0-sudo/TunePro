@@ -154,7 +154,8 @@ target_sources(MarsiAutoTune
         
         # Additional AI libraries (local implementations)
         ${CMAKE_CURRENT_SOURCE_DIR}/libs/crepe/crepe.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/libs/onnx/onnx_runtime.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/libs/tensorflow_lite/tensorflow_lite.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/libs/rubberband/RubberBandStretcher.cpp
 )
 
 # Set up include directories with proper paths
@@ -164,10 +165,12 @@ target_include_directories(MarsiAutoTune
         ${CMAKE_CURRENT_SOURCE_DIR}/Source
         ${CMAKE_CURRENT_SOURCE_DIR}/JuceLibraryCode
         ${CMAKE_CURRENT_SOURCE_DIR}/Assets
-        ${CMAKE_CURRENT_SOURCE_DIR}/libs/eigen/eigen-3.4.0
-        ${CMAKE_CURRENT_SOURCE_DIR}/libs/fftw/fftw-3.3.10/api
+        ${CMAKE_CURRENT_SOURCE_DIR}/libs/eigen
+        ${CMAKE_CURRENT_SOURCE_DIR}/libs/fftw
         ${CMAKE_CURRENT_SOURCE_DIR}/libs/crepe
-        ${CMAKE_CURRENT_SOURCE_DIR}/libs/onnx
+        ${CMAKE_CURRENT_SOURCE_DIR}/libs/tensorflow_lite
+        ${CMAKE_CURRENT_SOURCE_DIR}/libs/rubberband
+        ${CMAKE_CURRENT_SOURCE_DIR}/libs/crepe_models
     SYSTEM PRIVATE
         ${JUCE_SOURCE_DIR}/modules
 )
@@ -244,6 +247,13 @@ target_compile_definitions(MarsiAutoTune
         # MarsiStudio specific definitions
         MARSI_STUDIO_VERSION="${PROJECT_VERSION}"
         MARSI_AUTOTUNE_PLUGIN=1
+        
+        # AI and Audio Processing Libraries
+        USE_TENSORFLOW_LITE=1
+        USE_CREPE_PITCH_DETECTION=1
+        USE_RUBBERBAND_STRETCHER=1
+        HAVE_FFTW=1
+        HAVE_EIGEN=1
 )
 
 # Platform-specific configurations
@@ -270,6 +280,8 @@ if(APPLE)
         "-framework QuartzCore"
         "-framework MetalKit"
         "-framework Metal"
+        "-framework Accelerate"  # For optimized math operations
+        "-framework CoreML"      # For AI model inference
     )
     
 elseif(WIN32)
