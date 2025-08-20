@@ -22,9 +22,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     echo "🍎 Detected platform: macOS"
     echo "📦 Using autonomous libraries (no internet required)"
 else
-    echo "❌ This project is configured for macOS only"
+    echo "⚠️  This project is designed for macOS deployment"
     echo "   Current platform: $OSTYPE"
-    exit 1
+    echo "   Running in development/testing mode..."
+    echo ""
 fi
 
 # Check for required tools

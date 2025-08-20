@@ -1,0 +1,5 @@
+/home/runner/workspace/build/CMakeFiles/MarsiAutoTune.dir
+/home/runner/workspace/build/CMakeFiles/edit_cache.dir
+/home/runner/workspace/build/CMakeFiles/rebuild_cache.dir
+/home/runner/workspace/build/JUCE/CMakeFiles/edit_cache.dir
+/home/runner/workspace/build/JUCE/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,40 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/MarsiAutoTune.dir/link.d"
+  "CMakeFiles/MarsiAutoTune.dir/Source/AIModelLoader.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/Source/AIModelLoader.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/Source/AIModelLoader_backup.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/Source/AIModelLoader_backup.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/Source/LookAndFeel.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/Source/LookAndFeel.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/Source/ModeSelector.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/Source/ModeSelector.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/Source/Parameters.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/Source/Parameters.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/Source/PitchCorrectionEngine.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/Source/PitchCorrectionEngine.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/Source/PluginEditor.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/Source/PluginEditor.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/Source/PluginEditor_minimal.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/Source/PluginEditor_minimal.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/Source/PluginProcessor.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/Source/PluginProcessor.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/Source/PresetManager.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/Source/PresetManager.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/Source/Utils.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/Source/Utils.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/libs/crepe/crepe.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/libs/crepe/crepe.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/libs/fftw/fftw3.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/libs/fftw/fftw3.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/libs/rubberband/RubberBandStretcher.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/libs/rubberband/RubberBandStretcher.cpp.o.d"
+  "CMakeFiles/MarsiAutoTune.dir/libs/tensorflow_lite/tensorflow_lite.cpp.o"
+  "CMakeFiles/MarsiAutoTune.dir/libs/tensorflow_lite/tensorflow_lite.cpp.o.d"
+  "libMarsiAutoTune.pdb"
+  "libMarsiAutoTune.so"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/MarsiAutoTune.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

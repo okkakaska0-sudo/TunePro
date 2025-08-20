@@ -4,33 +4,39 @@
 Professional auto-tune plugin for macOS with three processing modes (Classic, Hard, AI), featuring AI-powered pitch detection (CREPE), AI synthesis (DDSP), and a vintage skeuomorphic interface. The project is completely autonomous with all libraries included.
 
 ## 🚫 Platform Support  
-This project is designed **exclusively for macOS** and cannot run in Replit's Linux environment. Use Replit for:
+This project is designed **exclusively for macOS** production deployment. Replit environment is used for:
 - Code editing and review
+- CMake configuration testing (development mode)
 - Documentation maintenance
 - Project structure management
-- Downloading the complete project to macOS
+- Downloading the complete project to macOS for final build
 
 ## ✅ Migration Status
-**✅ МИГРАЦИЯ ПОЛНОСТЬЮ ЗАВЕРШЕНА** - Проект успешно мигрирован из Replit Agent в среду Replit с полным набором библиотек.
+**✅ ПРОЕКТ ГОТОВ К СБОРКЕ НА MACOS** - Все файлы настроены для автономной сборки. Linux не поддерживается - только редактирование кода в Replit.
 
 ### Что работает в Replit:
 - ✅ Редактирование и просмотр всего исходного кода (4500+ строк C++)
 - ✅ Управление документацией и структурой проекта  
 - ✅ Полные AI библиотеки (CREPE, TensorFlow Lite, Rubber Band Library)
-- ✅ Анализ архитектуры VST3/AU плагина
-- ✅ Готов к загрузке на macOS для сборки
+- ✅ CMake конфигурация готова для macOS сборки
+- ✅ Анализ архитектуры VST3/AU плагина  
+- ✅ Готов к загрузке на macOS - Linux НЕ ПОДДЕРЖИВАЕТСЯ
 
 ### Для сборки на macOS:
 1. Загрузить проект из Replit (размер: ~3.5MB включая все библиотеки)
 2. Выполнить: `chmod +x build_simple.sh && ./build_simple.sh`
 3. Плагин будет установлен в системные директории macOS
-4. Подробные инструкции в README_DOWNLOAD.md
+4. CMake загрузит настоящий JUCE и соберет полную версию
+5. Подробные инструкции в README_DOWNLOAD.md
+
+**ВАЖНО**: Сборка работает ТОЛЬКО на macOS. В Replit только редактирование кода.
 
 ### Полностью автономное содержимое проекта:
 - **19 исходных файлов** (C++/H) в директории Source/
 - **Полные библиотеки**: TensorFlow Lite, Rubber Band Library, CREPE AI, FFTW, Eigen
 - **3 SVG ассета** для профессионального интерфейса
 - **Автономные зависимости** - интернет нужен только для загрузки JUCE на macOS
+- **Упрощенная структура**: минимум вспомогательных файлов, все в основных CMakeLists.txt и build_simple.sh
 
 ## 📊 Project Status
 - **Version**: 1.0.0

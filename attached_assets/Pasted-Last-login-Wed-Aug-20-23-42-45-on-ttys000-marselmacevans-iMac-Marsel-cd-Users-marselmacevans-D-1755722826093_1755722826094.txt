@@ -1,0 +1,62 @@
+Last login: Wed Aug 20 23:42:45 on ttys000
+marselmacevans@iMac-Marsel ~ % cd /Users/marselmacevans/Downloads/TunePro
+chmod +x build_simple.sh
+./build_simple.sh
+
+🎵 Building MarsiAutoTune Plugin...
+================================================
+🍎 Detected platform: macOS
+📦 Using autonomous libraries (no internet required)
+🔍 Checking required tools...
+✅ CMake found: cmake version 4.1.0
+📚 Checking local libraries...
+✅ All required libraries found
+✅ Xcode Command Line Tools found
+📁 Creating build directory...
+⚙️  Configuring CMake for macOS...
+-- The CXX compiler identification is AppleClang 16.0.0.16000026
+-- The C compiler identification is AppleClang 16.0.0.16000026
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Downloading JUCE framework for macOS build...
+-- JUCE stub loaded - this will download actual JUCE on macOS build
+-- Using JUCE stub - will work fully on macOS
+-- Creating dummy plugin target: MarsiAutoTune
+-- ==========================================
+-- MarsiAutoTune Configuration Summary:
+-- ==========================================
+-- Version: 1.0.0
+-- Build type: Release
+-- C++ Standard: 17
+-- Platform: Darwin
+-- macOS Deployment Target: 10.13
+-- Architectures: x86_64;arm64
+-- Compiler: AppleClang
+-- JUCE Version: Downloading latest stable
+-- Formats: VST3, AU, Standalone
+-- ==========================================
+-- Configuring done (2.4s)
+CMake Error at JUCE/CMakeLists.txt:49 (add_library):
+  Cannot find source file:
+
+    VERSION
+Call Stack (most recent call first):
+  CMakeLists.txt:76 (juce_add_plugin)
+
+
+CMake Error at JUCE/CMakeLists.txt:49 (add_library):
+  No SOURCES given to target: MarsiAutoTune
+Call Stack (most recent call first):
+  CMakeLists.txt:76 (juce_add_plugin)
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
+marselmacevans@iMac-Marsel TunePro % 

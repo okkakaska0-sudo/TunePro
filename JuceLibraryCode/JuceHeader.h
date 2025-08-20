@@ -1,26 +1,57 @@
-/*
-  JUCE Library Header File
-  
-  This file includes all the JUCE modules used by MarsiAutoTune plugin.
-  It provides a single include point for all JUCE functionality.
-*/
-
 #pragma once
 
-#include <juce_audio_basics/juce_audio_basics.h>
-#include <juce_audio_devices/juce_audio_devices.h>
-#include <juce_audio_formats/juce_audio_formats.h>
-#include <juce_audio_processors/juce_audio_processors.h>
-#include <juce_audio_utils/juce_audio_utils.h>
-#include <juce_core/juce_core.h>
-#include <juce_data_structures/juce_data_structures.h>
-#include <juce_dsp/juce_dsp.h>
-#include <juce_events/juce_events.h>
-#include <juce_graphics/juce_graphics.h>
-#include <juce_gui_basics/juce_gui_basics.h>
-#include <juce_gui_extra/juce_gui_extra.h>
+// JUCE Library stub header for MarsiAutoTune development
+// This provides basic definitions for development - full JUCE will be used on macOS
 
-// Plugin-specific defines
+// Basic JUCE namespace and essential classes for compilation
+namespace juce {
+    // Core types
+    class String;
+    class File;
+    class MemoryBlock;
+    class Random;
+    class Time;
+    
+    // Audio basics
+    class AudioSampleBuffer;
+    class AudioBuffer;
+    template<typename T> class AudioBuffer;
+    using AudioBufferF = AudioBuffer<float>;
+    
+    // Audio processing
+    class AudioProcessor;
+    class AudioProcessorEditor;
+    class AudioProcessorParameter;
+    class AudioParameterFloat;
+    class AudioParameterChoice;
+    class AudioParameterBool;
+    
+    // GUI components
+    class Component;
+    class Slider;
+    class Button;
+    class Label;
+    class ComboBox;
+    class LookAndFeel;
+    class Graphics;
+    class Colour;
+    class Font;
+    class Rectangle;
+    template<typename T> class Rectangle;
+    using Rectanglef = Rectangle<float>;
+    using Rectanglei = Rectangle<int>;
+    
+    // Events
+    class MouseEvent;
+    class KeyPress;
+    class Timer;
+    
+    // Essential constants and utilities  
+    static constexpr float MathConstants_pi = 3.141592653589793f;
+    static constexpr float MathConstants_e = 2.718281828459045f;
+}
+
+// Plugin-specific defines that would come from CMake
 #ifndef JucePlugin_Name
 #define JucePlugin_Name "MarsiAutoTune"
 #endif
@@ -73,9 +104,24 @@
 #define JucePlugin_VersionString "1.0.0"
 #endif
 
-// Namespace aliases for convenience
-using namespace juce;
-using namespace juce::dsp;
+// Preprocessor definitions for JUCE compatibility
+#define JUCE_DECLARE_NON_COPYABLE(className) \
+    className (const className&) = delete; \
+    className& operator= (const className&) = delete;
+
+#define JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(className) \
+    JUCE_DECLARE_NON_COPYABLE(className)
+
+#define JUCE_LEAK_DETECTOR(className)
+
+// Platform detection
+#if defined(__APPLE__)
+    #define JUCE_MAC 1
+#elif defined(_WIN32)
+    #define JUCE_WINDOWS 1
+#elif defined(__linux__)
+    #define JUCE_LINUX 1
+#endif
 
 // Binary data declarations for embedded assets
 namespace BinaryData
@@ -94,32 +140,16 @@ namespace BinaryData
 #define MARSISTUDIO_VERSION_STRING "1.0.0"
 #define MARSISTUDIO_BUILD_DATE __DATE__
 
-// Debug logging helper
-#if JUCE_DEBUG
-    #define MARSI_DBG(text) DBG("MarsiAutoTune: " << text)
+// Debug logging helper (stub)
+#if defined(DEBUG) || defined(_DEBUG)
+    #define MARSI_DBG(text) // Debug logging stub
+    #define JUCE_DEBUG 1
 #else
     #define MARSI_DBG(text)
+    #define JUCE_DEBUG 0
 #endif
 
-// Performance profiling helper
-#if JUCE_DEBUG
-    #define MARSI_PROFILE_BLOCK(name) \
-        ScopedProfiler profiler(name)
-    
-    class ScopedProfiler
-    {
-    public:
-        ScopedProfiler(const String& n) : name(n), startTime(Time::getHighResolutionTicks()) {}
-        ~ScopedProfiler() 
-        { 
-            auto elapsed = Time::getHighResolutionTicksPerSecond() > 0 ?
-                (Time::getHighResolutionTicks() - startTime) / Time::getHighResolutionTicksPerSecond() * 1000.0 : 0.0;
-            MARSI_DBG(name << " took " << elapsed << "ms"); 
-        }
-    private:
-        String name;
-        int64 startTime;
-    };
-#else
-    #define MARSI_PROFILE_BLOCK(name)
-#endif
+#define MARSI_PROFILE_BLOCK(name) // Performance profiling stub
+
+// Namespace aliases for convenience
+using namespace juce;

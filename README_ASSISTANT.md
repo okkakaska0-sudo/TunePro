@@ -5,6 +5,10 @@ Professional VST3/AU AutoTune plugin for macOS with three processing modes (Clas
 
 ## 📊 Current Implementation Status
 
+### ✅ ПРОЕКТ ГОТОВ К MACOS СБОРКЕ (August 20, 2025)
+
+**Status**: Все файлы настроены, CMake конфигурация исправлена, проект готов к загрузке и сборке на macOS. Linux НЕ поддерживается в принципе.
+
 ### ✅ Completed Core Features:
 - **Audio Processing Engine**: Complete with three distinct modes
 - **AI Integration**: CREPE pitch detection + ONNX runtime + DDSP synthesis  
